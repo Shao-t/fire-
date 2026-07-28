@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>日本花火引擎 - GPU Particle Engine</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 30%, #0a1830 0%, #020308 70%, #000 100%);
+  }
+  #scene { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: block; }
+
+  #ui { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+        display: flex; gap: 12px; z-index: 10; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; padding: 12px 22px; border-radius: 999px; font-size: 13px;
+    cursor: pointer; backdrop-filter: blur(8px); transition: 0.3s; font-family: sans-serif;
+  }
+  .btn.active { background: rgba(255,200,80,0.3); border-color: #ffe580; color: #ffe580; }
+
+  #type-label {
+    position: fixed; top: 30px; right: 30px; color: #ffe580; font-size: 16px;
+    letter-spacing: 0.2em; opacity: 0; transition: 0.5s; z-index: 10; font-family: sans-serif;
+  }
+  #fps {
+    position: fixed; top: 30px; left: 30px; color: rgba(255,255,255,0.5); font-size: 12px;
+    z-index: 10; font-family: monospace;
+  }
+  #hint {
+    position: fixed; top: 60px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.55); font-size: 12px; z-index: 10; font-family: sans-serif;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div id="type-label"></div>
+<div id="fps">FPS: --</div>
+<div id="hint">點擊 / 觸控畫面發射煙火</div>
+
+<div id="ui">
+  <button class="btn" id="btnPhoenix">復興祈願 ─ 不死鳥</button>
+  <button class="btn" id="btnGiant">正三尺玉</button>
+  <button class="btn active" id="btnSenrin">彩雲孔雀千輪</button>
+  <button class="btn" id="btnColorChange">職人藝 ─ 變色菊</button>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
